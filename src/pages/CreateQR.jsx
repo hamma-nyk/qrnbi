@@ -39,7 +39,7 @@ const CreateQR = () => {
         <Fragment>
             <div className='flex flex-col w-screen h-screen bg-black justify-center items-center'>
                 <div className='top-0 left-0 z-[-1] fixed w-[500px] h-[700px]' ref={canvasRef}>
-                    <div className='w-[500px] h-[200px] bg-[url(./nbi.png)]'>
+                    <div className='w-[500px] h-[200px] bg-[url(/nbi.png)]'>
                     </div>
                     <canvas id='canvas'></canvas>
                 </div>
