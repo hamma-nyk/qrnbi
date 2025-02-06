@@ -6,6 +6,10 @@ import CreateQR from './pages/CreateQR'
 
 const router = createBrowserRouter([
   {
+    path: "/",
+    element: <CreateQR />,
+  },
+  {
     path: "/create",
     element: <CreateQR />,
   },
