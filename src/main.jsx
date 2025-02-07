@@ -9,10 +9,6 @@ const router = createBrowserRouter([
     path: "/",
     element: <CreateQR />,
   },
-  {
-    path: "/create",
-    element: <CreateQR />,
-  },
 ])
 createRoot(document.getElementById('root')).render(
   <StrictMode>
