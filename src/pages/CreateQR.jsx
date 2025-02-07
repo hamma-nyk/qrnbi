@@ -3,7 +3,6 @@ import { toPng } from 'html-to-image'
 import QRCode from 'qrcode'
 const CreateQR = () => {
     const [url, setUrl] = useState('')
-    const [generated, setGenerated] = useState(false)
     const canvasRef = useRef(null)
     const setUrlHandler = (e) => {
         setUrl(e.target.value)
@@ -26,9 +25,6 @@ const CreateQR = () => {
             console.log('success!');
         })
         document.getElementById('imageQR').src = document.getElementById('canvas').toDataURL()
-        if (document.getElementById('imageQR').src !== '') {
-            setGenerated(true)
-        }
     })
     const downloadQR = async () => {
         if (canvasRef.current) {
@@ -53,9 +49,9 @@ const CreateQR = () => {
                     <input class="border-2 border-[#249365] w-full sm:w-[400px] mb-5 bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
                         type="text" onChange={setUrlHandler} placeholder="Insert your link here..." />
                     <div className='border-2 border-[#249365] rounded-md p-1 w-full aspect-square sm:h-[400px] sm:w-[400px] bg-cover bg-[url("/qrbg.png")]'>
-                        <img className={`object-cover`} id="imageQR" src="" alt="" />
+                        <img className={`object-cover ${url === '' ? 'hidden' : 'block'}`} id="imageQR" src="" alt="" />
                     </div>
-                    <a href="#_" onClick={downloadQR}  class="mt-5 relative px-10 py-3 font-medium text-white transition duration-300 bg-[#249365] rounded-md hover:bg-[#2F9C6F] ease">
+                    <a onClick={downloadQR}  class="mt-5 relative px-10 py-3 font-medium text-white transition duration-300 bg-[#249365] rounded-md hover:bg-[#2F9C6F] ease">
                         <span class="absolute bottom-0 left-0 h-full">
                             <svg viewBox="0 0 487 487" class="w-auto h-full opacity-100 object-stretch" xmlns="http://www.w3.org/2000/svg"><path d="M0 .3c67 2.1 134.1 4.3 186.3 37 52.2 32.7 89.6 95.8 112.8 150.6 23.2 54.8 32.3 101.4 61.2 149.9 28.9 48.4 77.7 98.8 126.4 149.2H0V.3z" fill="#FFF" fill-rule="nonzero" fill-opacity=".1"></path></svg>
                         </span>
